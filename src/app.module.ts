@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MealsModule } from './meals/meals.module';
+import { MealModule } from './meal/meal.module';
+import { IngredientModule } from './ingredient/ingredient.module';
+import { PlanningModule } from './planning/planning.module';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -16,7 +19,10 @@ import { MealsModule } from './meals/meals.module';
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       synchronize: true,
     }),
-    MealsModule,
+    MealModule,
+    IngredientModule,
+    PlanningModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],

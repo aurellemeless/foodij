@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MealsService } from './meals.service';
-import { MealsController } from './meals.controller';
 import { Meal } from './entities/meal.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MealController } from './meal.controller';
+import { MealService } from './meal.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Meal])],
-  controllers: [MealsController],
-  providers: [MealsService],
+  controllers: [MealController],
+  providers: [MealService],
 })
-export class MealsModule {}
+export class MealModule {}

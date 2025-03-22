@@ -7,13 +7,13 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { MealsService } from './meals.service';
 import { CreateMealDto } from './dto/create-meal.dto';
 import { UpdateMealDto } from './dto/update-meal.dto';
+import { MealService } from './meal.service';
 
 @Controller('meals')
-export class MealsController {
-  constructor(private readonly mealsService: MealsService) {}
+export class MealController {
+  constructor(private readonly mealsService: MealService) {}
 
   @Post()
   async create(@Body() createMealDto: CreateMealDto) {
