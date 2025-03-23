@@ -1,4 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Ingredient } from 'src/ingredient/entities/ingredient.entity';
+import { Task } from 'src/task/entities/task.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Meal {
@@ -11,6 +20,11 @@ export class Meal {
   @Column('text')
   description: string;
 
-  @Column()
-  components: string;
+  @ManyToMany(() => Ingredient)
+  @JoinTable()
+  ingredients: Ingredient[];
+
+  @OneToMany(() => Task, (task) => task.meal)
+  @JoinTable()
+  tasks: Task[];
 }

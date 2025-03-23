@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Task } from 'src/task/entities/task.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Planning {
@@ -9,8 +16,12 @@ export class Planning {
   title: string;
 
   @Column()
-  startDate: string;
+  startDate: Date;
 
   @Column()
-  endDate: string;
+  endDate: Date;
+
+  @OneToMany(() => Task, (task) => task.planning)
+  @JoinTable()
+  tasks: Task[];
 }

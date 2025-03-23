@@ -15,7 +15,7 @@ import { TaskModule } from './task/task.module';
       port: 5432,
       username: 'postgres',
       password: 'example',
-      database: 'postgres',
+      database: 'foodij',
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       synchronize: true,
     }),

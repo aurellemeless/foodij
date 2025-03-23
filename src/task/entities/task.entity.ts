@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Meal } from 'src/meal/entities/meal.entity';
+import { Planning } from 'src/planning/entities/planning.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Task {
@@ -9,5 +17,13 @@ export class Task {
   title: string;
 
   @Column()
-  exDate: string;
+  eatAt: Date;
+
+  @OneToOne(() => Meal)
+  @JoinColumn()
+  meal: Meal;
+
+  @OneToOne(() => Planning)
+  @JoinColumn()
+  planning: Planning;
 }
