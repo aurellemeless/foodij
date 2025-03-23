@@ -15,7 +15,7 @@ export class Planning {
   @Column()
   title: string;
 
-  @Column()
+  @Column('timestamp with time zone')
   startDate: Date;
 
   @Column()

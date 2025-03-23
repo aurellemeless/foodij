@@ -16,7 +16,7 @@ export class Task {
   @Column()
   title: string;
 
-  @Column()
+  @Column('timestamp with time zone')
   eatAt: Date;
 
   @OneToOne(() => Meal)
