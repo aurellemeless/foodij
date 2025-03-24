@@ -11,6 +11,7 @@ export class PlanningService {
     @InjectRepository(Planning)
     private planningRepository: Repository<Planning>,
   ) {}
+
   async create(createPlanningDto: CreatePlanningDto): Promise<Planning> {
     const record = this.planningRepository.create(createPlanningDto);
     return await this.planningRepository.save(record);

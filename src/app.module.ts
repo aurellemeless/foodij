@@ -6,6 +6,8 @@ import { MealModule } from './meal/meal.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { PlanningModule } from './planning/planning.module';
 import { TaskModule } from './task/task.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { TaskModule } from './task/task.module';
     IngredientModule,
     PlanningModule,
     TaskModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

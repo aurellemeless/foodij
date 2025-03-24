@@ -1,8 +1,10 @@
 import { Task } from 'src/task/entities/task.entity';
+import { User } from 'src/users/entities/user.entity';
 import {
   Column,
   Entity,
   JoinTable,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -18,10 +20,14 @@ export class Planning {
   @Column('timestamp with time zone')
   startDate: Date;
 
-  @Column()
+  @Column('timestamp with time zone')
   endDate: Date;
 
   @OneToMany(() => Task, (task) => task.planning)
   @JoinTable()
   tasks: Task[];
+
+  @ManyToOne(() => User, (user) => user.plannings)
+  @JoinTable()
+  user: User;
 }
