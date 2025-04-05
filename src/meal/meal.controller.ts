@@ -6,12 +6,15 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateMealDto } from './dto/create-meal.dto';
 import { UpdateMealDto } from './dto/update-meal.dto';
 import { MealService } from './meal.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('meals')
+@UseGuards(JwtAuthGuard)
 export class MealController {
   constructor(private readonly mealsService: MealService) {}
 
