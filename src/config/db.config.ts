@@ -8,6 +8,6 @@ export const DbConfig: TypeOrmModuleOptions = {
   username: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'example',
   database: process.env.DB_NAME || 'foodij',
-  entities: [__dirname + '/**/*.entity.{ts,js}'],
-  synchronize: process.env.NODE_ENV !== 'production',
+  entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  synchronize: process.env.NODE_ENV === 'development',
 } as TypeOrmModuleOptions;

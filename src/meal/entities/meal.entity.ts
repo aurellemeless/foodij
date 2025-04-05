@@ -1,5 +1,6 @@
 import { Ingredient } from 'src/ingredient/entities/ingredient.entity';
 import { Task } from 'src/task/entities/task.entity';
+import { User } from 'src/users/entities/user.entity';
 import {
   Column,
   Entity,
@@ -27,4 +28,7 @@ export class Meal {
   @OneToMany(() => Task, (task) => task.meal)
   @JoinTable()
   tasks: Task[];
+
+  @ManyToMany(() => User, (user) => user.favorites)
+  favoriteBy: User[];
 }
