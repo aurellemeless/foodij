@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Meal {
+export class Dish {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -25,7 +25,7 @@ export class Meal {
   @JoinTable()
   ingredients: Ingredient[];
 
-  @OneToMany(() => Task, (task) => task.meal)
+  @OneToMany(() => Task, (task) => task.dish)
   @JoinTable()
   tasks: Task[];
 

@@ -4,12 +4,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { UserConsumer } from './queues/user.consumer';
 import { BullModule } from '@nestjs/bullmq';
-import { Meal } from 'src/meal/entities/meal.entity';
+import { Dish } from 'src/dish/entities/dish.entity';
 import { AccountsController } from './accounts.controller';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, Meal]),
+    TypeOrmModule.forFeature([User, Dish]),
     BullModule.registerQueue({
       name: 'user',
     }),

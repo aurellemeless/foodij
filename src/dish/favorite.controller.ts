@@ -1,15 +1,15 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { MealService } from './meal.service';
+import { DishService } from './dish.service';
 import { CreateFavoriteDto } from './dto/create-favorite.dto';
 
 @Controller('favorites')
 export class FavoriteController {
-  constructor(private readonly mealsService: MealService) {}
+  constructor(private readonly dishesService: DishService) {}
 
   @Get(':id')
   async create(@Param('id') createFavoriteDto: CreateFavoriteDto) {
     try {
-      await this.mealsService.create(createFavoriteDto);
+      await this.dishesService.create(createFavoriteDto);
 
       return {
         success: true,

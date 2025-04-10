@@ -1,4 +1,4 @@
-import { Meal } from 'src/meal/entities/meal.entity';
+import { Dish } from 'src/dish/entities/dish.entity';
 import { Planning } from 'src/planning/entities/planning.entity';
 import {
   Column,
@@ -26,9 +26,9 @@ export class User {
   @OneToMany(() => Planning, (planning) => planning.user)
   plannings: Planning[];
 
-  @ManyToMany(() => Meal, (meal) => meal.favoriteBy)
+  @ManyToMany(() => Dish, (dish) => dish.favoriteBy)
   @JoinTable()
-  favorites: Meal[];
+  favorites: Dish[];
 
   @Column({ default: false })
   isActive: boolean;

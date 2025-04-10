@@ -1,4 +1,4 @@
-import { Meal } from 'src/meal/entities/meal.entity';
+import { Dish } from 'src/dish/entities/dish.entity';
 import { Planning } from 'src/planning/entities/planning.entity';
 import {
   Column,
@@ -19,9 +19,9 @@ export class Task {
   @Column('timestamp with time zone')
   eatAt: Date;
 
-  @OneToOne(() => Meal)
+  @OneToOne(() => Dish)
   @JoinColumn()
-  meal: Meal;
+  dish: Dish;
 
   @OneToOne(() => Planning)
   @JoinColumn()

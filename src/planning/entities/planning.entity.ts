@@ -1,5 +1,6 @@
 import { Task } from 'src/task/entities/task.entity';
 import { User } from 'src/users/entities/user.entity';
+import { Dish } from 'src/dish/entities/dish.entity';
 import {
   Column,
   Entity,
@@ -26,6 +27,10 @@ export class Planning {
   @OneToMany(() => Task, (task) => task.planning)
   @JoinTable()
   tasks: Task[];
+
+  @ManyToOne(() => Dish, (dish) => dish.tasks)
+  @JoinTable()
+  dish: Dish;
 
   @ManyToOne(() => User, (user) => user.plannings)
   @JoinTable()

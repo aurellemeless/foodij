@@ -8,24 +8,24 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { CreateMealDto } from './dto/create-meal.dto';
-import { UpdateMealDto } from './dto/update-meal.dto';
-import { MealService } from './meal.service';
+import { CreateDishDto } from './dto/create-dish.dto';
+import { UpdateDishDto } from './dto/update-dish.dto';
+import { DishService } from './dish.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
-@Controller('meals')
+@Controller('dishes')
 @UseGuards(JwtAuthGuard)
-export class MealController {
-  constructor(private readonly mealsService: MealService) {}
+export class DishController {
+  constructor(private readonly dishesService: DishService) {}
 
   @Post()
-  async create(@Body() createMealDto: CreateMealDto) {
+  async create(@Body() createDishDto: CreateDishDto) {
     try {
-      await this.mealsService.create(createMealDto);
+      await this.dishesService.create(createDishDto);
 
       return {
         success: true,
-        message: 'Meal Created Successfully',
+        message: 'Dish Created Successfully',
       };
     } catch (error) {
       return {
@@ -38,7 +38,7 @@ export class MealController {
   @Get()
   async findAll() {
     try {
-      return await this.mealsService.findAll();
+      return await this.dishesService.findAll();
     } catch (error) {
       return {
         success: false,
@@ -50,7 +50,7 @@ export class MealController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
     try {
-      return await this.mealsService.findOne(+id);
+      return await this.dishesService.findOne(+id);
     } catch (error) {
       return {
         success: false,
@@ -60,9 +60,9 @@ export class MealController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateMealDto: UpdateMealDto) {
+  async update(@Param('id') id: string, @Body() updateDishDto: UpdateDishDto) {
     try {
-      return await this.mealsService.update(+id, updateMealDto);
+      return await this.dishesService.update(+id, updateDishDto);
     } catch (error) {
       return {
         success: false,
@@ -74,7 +74,7 @@ export class MealController {
   @Delete(':id')
   async remove(@Param('id') id: string) {
     try {
-      return await this.mealsService.remove(+id);
+      return await this.dishesService.remove(+id);
     } catch (error) {
       return {
         success: false,
